@@ -1,6 +1,7 @@
 
 # Use the official Python image from the Docker Hub
-FROM python:3.9-slim
+FROM python:3.13-slim
+
 
 # Set the working directory in the container
 WORKDIR /app
@@ -14,5 +15,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-# Run the Django app
-CMD ["python", "manage.py", "runserver"]
+# Run the Flask app with Gunicorn
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]
