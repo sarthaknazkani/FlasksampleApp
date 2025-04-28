@@ -5,6 +5,11 @@ on:
     branches:
       - feature/build
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag image'
+        required: true
+        default: 'latest'
 
 jobs:
   build:
@@ -48,6 +53,5 @@ jobs:
       with:
         context: "{{defaultContext}}:todo_site"
         push: true
-        tags: ghcr.io/${{ github.repository_owner }}/flask-app:latest
-                
+        tags: ghcr.io/${{ github.repository_owner }}/flask-app:${{ github.event.inputs.tag || 'latest' }}
         
