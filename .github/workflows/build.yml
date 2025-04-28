@@ -23,3 +23,9 @@ jobs:
         python -m pip install --upgrade pip
         cd todo_site/
         ls -la
+
+    - name: Docker Setup Docker
+      uses: docker/setup-docker-action@v4.3.0
+      with:
+        # Docker CE version. (e.g, v24.0.9)
+        version: v24.0.9              
