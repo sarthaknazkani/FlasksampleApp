@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag image'
+        description: Image tag
+        type: string
         required: true
-        default: 'latest'
 
 jobs:
   build:
